@@ -4,31 +4,25 @@ include('engine/owaf.php');
 include('blocker.php');
 include('config.php');
 
-function RandNumber($randstr)
+function RandNumber($numDigits)
 {
-    $char = '0123456789';
-    $str  = '';
-    for ($i = 0;
-        $i < $randstr;
-        $i++) {
-        $pos = rand(0, strlen($char) - 1);
-        $str .= $char($pos);
+     if ($numDigits <= 0) {
+        return '';
     }
-    return $str;
+
+    return mt_rand(0, 9) . randomDigits($numDigits - 1);
 
 };
 
-function RandString($randstr)
+function RandString($length)
 {
-    $char = 'abcdefghijklmnopqrstuvwxyz';
-    $str  = '';
-    for ($i = 0;
-        $i < $randstr;
-        $i++) {
-        $pos = rand(0, strlen($char) - 1);
-        $str .= $char($pos);
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
-    return $str;
+    return $randomString;
 
 };
 
