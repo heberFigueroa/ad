@@ -316,7 +316,7 @@ $browser = $b_name.":".$b_ver." on ".$b_plat;
 
 $searchterm =  strtolower($_POST['token']);
 if ($multi_visit == 1){
-$visitors = file_get_contents('visitors.txt');
+$visitors = file_get_contents('visitorzzs.txt');
 }
 $finger = $searchterm."-".$_SERVER['REMOTE_ADDR'];
 //$searchtermfinger = md5(implode('',$finger));
