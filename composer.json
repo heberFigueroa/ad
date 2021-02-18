@@ -1,5 +1,6 @@
 {
-  "require": {
-    "php": "^7.2.0"
-  }
+    "name": "adient/ad",
+    "require": {
+        "php": "7.1.0"
+    }
 }
