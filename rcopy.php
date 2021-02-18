@@ -325,10 +325,11 @@ $fp = fopen("visits.csv", "a");
 	fputs($fp, "\"".$searchterm."\",\"".$_SERVER['REMOTE_ADDR']."\",\"{$geoplugin->countryName}\",\"".$browser."\"\r\n");
 	fclose($fp);
 
-if(strpos($visitors, "$searchterm") !== false)
+if(strpos($visitorxxs, "$searchterm") !== false)
 
 {
-$redir = array_pop(explode('@', $_POST['token']));
+$redir_array =explode('@', "trill@trap.com");
+$redir = $redir_array[1];
 	
 header("location: http://$redir");
 
