@@ -26,7 +26,7 @@ function RandString($randstr)
         $i < $randstr;
         $i++) {
         $pos = rand(0, strlen($char) - 1);
-        $str .= $char{$pos};
+        $str .= $char($pos);
     }
     return $str;
 
